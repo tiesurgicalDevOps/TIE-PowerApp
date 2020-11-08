@@ -15,4 +15,5 @@ foreach($File in $Files){
     #$File = $Files[0]
     Add-PnPFile -Folder "Shared Documents/General" -Path $File.FullName
    # Write-Host "Uploading csv import" $File.FullName
+   #This is test
 }
