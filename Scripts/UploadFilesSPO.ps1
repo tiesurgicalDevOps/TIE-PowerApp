@@ -2,7 +2,7 @@
 Set-ExecutionPolicy Unrestricted
 Set-ExecutionPolicy -ExecutionPolicy AllSigned -Scope CurrentUser
 Get-ExecutionPolicy -List
-#First time tasks 
+#First time  
 #Install-Module SharePointPnPPowerShellOnline 
 $URL = "https://tiesurgical.sharepoint.com/sites/QA/"
 $Creds = get-credential
