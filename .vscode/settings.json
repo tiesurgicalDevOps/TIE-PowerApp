@@ -1,4 +1,6 @@
 {
     "git.allowForcePush": true,
-    "git.autofetch": true
+    "git.autofetch": true,
+    "vscode-pull-requests-azure-devops.collection": "https://dev.azure.com/tiesurgical/_git/TIE-PowerApp",
+    "vscode-pull-requests-azure-devops.access-token": "bjftfkiwbe2oerxr22jh522oovlwvz72ku24tz7nc2ycfpwqohmq"
 }
