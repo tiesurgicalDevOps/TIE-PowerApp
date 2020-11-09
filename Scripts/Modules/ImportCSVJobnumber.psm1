@@ -18,13 +18,14 @@ $URL = "https://tiesurgical.sharepoint.com/sites/QA/"
 Connect-PnPOnline -Url $URL -UseWebLogin
 #-Credentials  $Creds
 
-$CustomerData = $CSVFileDir
-$listName = $SPOListNa #"Jobnumber"
-#“C:\temp\JobNumberFile.csv”
+$CustomerData = $CSVFileDir #“C:\temp\JobNumberFile.csv”
+$listName = $SPOListName #"Jobnumber"
+
 $X=0
 
 
-if($Option=1){
+if($Option=1)
+{
 Import-Csv -Path $CustomerData | ForEach-Object {
 
     $checkitem = $null
@@ -112,7 +113,7 @@ elseif ($Option=3) {
 $caml=@"
         <View>  
             <Query> 
-                <Where><Eq><FieldRef Name='JobNumberID' /><Value Type='Text'>$tarTitle</Value></Eq></Where> 
+                <Where><Eq><FieldRef Name='SupplierID' /><Value Type='Text'>$tarTitle</Value></Eq></Where> 
             </Query> 
         </View>  -PageSize 1
 "@
@@ -121,23 +122,73 @@ $caml=@"
        $X++
        if($checkitem)
             {
-            Write-Host "this item exists:" $_.Jobnumber "  " $X
+            Write-Host "this item exists:" $_.SupplierID "  " $X
             Set-PnPListItem -List $listName -identity $checkitem -Values @{
-                "SupplierID"= $_.Customer;
-                "Supplier Name"= $_.Jobnumber;
-                "ClientID"= $_.ClientID;
+                "SupplierID"= $_.SupplierID;
+                "Supplier Name"= $_.SupplierName;
                 "FileImportDateStamp" = "Update rec" + $DateStamp
                 }
             }
         else
             {
-            Write-Host "this item does not exist:" $_.Jobnumber "  " $X
+            Write-Host "this item does not exist:" $_.SupplierID "  " $X
             #//add item
             Add-PnPListItem -List $listName -Values @{
-                "Customer"= $_.Customer;
-                "JobNumberID"= $_.Jobnumber;
-                "ClientID"= $_.ClientID;
-                "FileImportDateStamp" ="Insert rec" + $DateStamp
+                "SupplierID"= $_.SupplierID;
+                "Supplier Name"= $_.SupplierName;
+                "FileImportDateStamp" = "Insert rec" + $DateStamp
+              
+                }
+            }
+    }
+    
+}
+elseif ($Option=4) {
+    Import-Csv -Path $CustomerData | ForEach-Object {
+
+        $checkitem = $null
+        $tarTitle= $_.OurStaffID
+        
+$caml=@"
+        <View>  
+            <Query> 
+                <Where><Eq><FieldRef Name='OurStaffID' /><Value Type='Text'>$tarTitle</Value></Eq></Where> 
+            </Query> 
+        </View>  -PageSize 1
+"@
+        $DateStamp= Get-Date -Format " dd/MM/yyyy HH:mm K"
+        $checkitem= Get-PnPListItem -List $listName -Query $caml
+       $X++
+       if($checkitem)
+            {
+            Write-Host "this item exists:" $_.OurStaffID "  " $X
+            Set-PnPListItem -List $listName -identity $checkitem -Values @{
+                "OurStaffID"= $_.OurStaffID;
+                "FirstName"= $_.FirstName;
+                "Surname"= $_.Surname;
+                "WindowsAlias"= $_.WindowsAlias;
+                "FullName"= $_.FullName;
+                "Inactive"= $_.Inactive;
+                "IsPerson"= $_.IsPerson;
+                "EmailAddress"= $_.EmailAddress;
+                "FileImportDateStamp" = "Update rec" + $DateStamp
+                }
+            }
+        else
+            {
+            Write-Host "this item does not exist:" $_.OurStaffID "  " $X
+            #//add item
+            Add-PnPListItem -List $listName -Values @{
+                "OurStaffID"= $_.OurStaffID;
+                "FirstName"= $_.FirstName;
+                "Surname"= $_.Surname;
+                "WindowsAlias"= $_.WindowsAlias;
+                "FullName"= $_.FullName;
+                "Inactive"= $_.Inactive;
+                "IsPerson"= $_.IsPerson;
+                "EmailAddress"= $_.EmailAddress;
+                "FileImportDateStamp" = "Update rec" + $DateStamp
+              
                 }
             }
     }
