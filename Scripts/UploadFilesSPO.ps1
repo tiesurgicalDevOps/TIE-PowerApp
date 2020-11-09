@@ -2,7 +2,7 @@
 Set-ExecutionPolicy Unrestricted
 Set-ExecutionPolicy -ExecutionPolicy AllSigned -Scope CurrentUser
 Get-ExecutionPolicy -List
-#First time  
+#First times 
 #Install-Module SharePointPnPPowerShellOnline 
 $URL = "https://tiesurgical.sharepoint.com/sites/QA/"
 $Creds = get-credential
@@ -15,5 +15,4 @@ foreach($File in $Files){
     #$File = $Files[0]
     Add-PnPFile -Folder "Shared Documents/General" -Path $File.FullName
    # Write-Host "Uploading csv import" $File.FullName
-   
 }
