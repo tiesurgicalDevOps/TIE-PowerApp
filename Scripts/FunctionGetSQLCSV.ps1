@@ -1,4 +1,5 @@
-﻿Function get-sql-csv() {
+﻿Import-Module C:\devops\TIE-PowerApp\Scripts\Modules\ImportCSVJobnumber.psm1
+Function get-sql-csv() {
     [CmdletBinding()]
     param (
         [Parameter()][String] $filePath,
@@ -29,3 +30,5 @@ get-sql-csv -SQLSyntax "SELECT [JobNumber],[TrancerName],[Tracer] FROM [JobSysDa
 get-sql-csv -SQLSyntax "SELECT [SupplierID],[Supplier Name],[ExternalRepairer] FROM [JobSysData].[dbo].[IS-vwERList];" -filePath "Z:\JobSystem\PowerApp Data\SupplierFile.csv"
 get-sql-csv -SQLSyntax "SELECT [Customer],[Job Number] as Jobnumber,[ClientID]  FROM [JobSysData].[dbo].[IS-vwJobList];" -filePath "Z:\JobSystem\PowerApp Data\JobNumberFile.csv"
 get-sql-csv -SQLSyntax "SELECT *  FROM [JobSysData].[dbo].[vwStaff];" -filePath "Z:\JobSystem\PowerApp Data\StaffFile.csv"
+
+GetImportCSVdatasource -CSVFileDir "Z:\JobSystem\PowerApp Data\StaffFile.csv" -SPOListName "StaffFile" -Option 4
