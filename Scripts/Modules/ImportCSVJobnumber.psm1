@@ -195,10 +195,6 @@ $caml=@"
     
 }
 
-<<<<<<< HEAD
-}#End of Function
-Clear-Host
-=======
 }#End of Functionsasas
 Clear-Host
->>>>>>> b56d55ebe483c945e50c7ee1491e9db7d05408de
+
