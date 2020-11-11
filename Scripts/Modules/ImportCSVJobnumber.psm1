@@ -153,7 +153,7 @@ $caml=@"
 $caml=@"
             <View>  
                 <Query> 
-                    <Where><Eq><FieldRef Name='OurStaffID' /><Value Type='Integer'>$tarTitle</Value></Eq></Where> 
+                    <Where><Eq><FieldRef Name='OurStaffID' /><Value Type='Number'>$tarTitle</Value></Eq></Where> 
                 </Query> 
             </View>  -PageSize 1
 "@
@@ -199,4 +199,4 @@ $caml=@"
 
 }#End of Function
 Clear-Host
-GetImportCSVdatasource -CSVFileDir "Z:\JobSystem\PowerApp Data\StaffFile.csv" -SPOListName "StaffFile" -Option 4
+#GetImportCSVdatasource -CSVFileDir "Z:\JobSystem\PowerApp Data\StaffFile.csv" -SPOListName "StaffFile" -Option 4
