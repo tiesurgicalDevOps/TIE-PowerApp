@@ -12,9 +12,7 @@ Function GetImportCSVdatasource()
     
 
 $URL = "https://tiesurgical.sharepoint.com/sites/QA/"
-#$Creds = get-credential
-#Add-PnPStoredCredential -Name $URL -Username $Creds.UserName -Password $Creds.Password
-#Get-PnPStoredCredential -Name $Creds -Type PSCredential
+
 Connect-PnPOnline -Url $URL -UseWebLogin
 #-Credentials  $Creds
 
