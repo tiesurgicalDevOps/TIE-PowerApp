@@ -15,7 +15,7 @@ $URL = "https://tiesurgical.sharepoint.com/sites/QA/"
 Connect-PnPOnline -Url $URL -Credentials  M365Access
 
 #region Get SQL data for SPO import process
-get-sql-csv -SQLSyntax "SELECT [JobNumber],[TrancerName],[Tracer] FROM [JobSysData].[dbo].[IS-vwJobItems_pwerapp];" -filePath "Z:\JobSystem\PowerApp Data\TracerFile.csv"
+get-sql-csv -SQLSyntax "SELECT [JobNumber],[TracerName],[Tracer] FROM [JobSysData].[dbo].[IS-vwJobItems_pwerapp];" -filePath "Z:\JobSystem\PowerApp Data\TracerFile.csv"
 get-sql-csv -SQLSyntax "SELECT [SupplierID],[Supplier Name],[ExternalRepairer] FROM [JobSysData].[dbo].[IS-vwERList];" -filePath "Z:\JobSystem\PowerApp Data\SupplierFile.csv"
 get-sql-csv -SQLSyntax "SELECT [Customer],[Job Number] as Jobnumber,[ClientID]  FROM [JobSysData].[dbo].[IS-vwJobList];" -filePath "Z:\JobSystem\PowerApp Data\JobNumberFile.csv"
 get-sql-csv -SQLSyntax "SELECT *  FROM [JobSysData].[dbo].[vwStaff];" -filePath "Z:\JobSystem\PowerApp Data\StaffFile.csv"
