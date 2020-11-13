@@ -2,6 +2,7 @@
 Set-ExecutionPolicy Unrestricted
 Set-ExecutionPolicy -ExecutionPolicy AllSigned -Scope CurrentUser
 Get-ExecutionPolicy -List
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 #region List import data and process
 Import-Module C:\devops\TIE-PowerApp\Scripts\Modules\ImportCSVJobnumber.psm1
 Import-Module C:\devops\TIE-PowerApp\Scripts\Modules\FunctionGetSQLCSV.psm1
