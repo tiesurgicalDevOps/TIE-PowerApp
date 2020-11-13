@@ -1,4 +1,4 @@
-﻿
+﻿Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 Function get-sql-csv() {
     [CmdletBinding()]
     param (
