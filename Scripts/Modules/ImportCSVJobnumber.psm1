@@ -15,17 +15,17 @@ Function GetImportCSVdatasource()
 
 $URL = "https://tiesurgical.sharepoint.com/sites/QA/"
 
-Connect-PnPOnline -Url $URL -UseWebLogin
+Connect-PnPOnline -Url $URL #-UseWebLogin
 #-Credentials  $Creds
 
-$CustomerData = $CSVFileDir #“C:\temp\JobNumberFile.csv”
-$listName = $SPOListName #"Jobnumber"
+$CustomerData = "C:\AzureDevOps\PowerShell\tie\data\TracerFile1.csv"
+$listName = "TracerData" #$SPOListName 
 Write-Host "1st line " $CSVFileDir " -- table " $SPOListName " -- Option " $Option.ToString() 
 $X=0
 
 
 switch ($Option) {
-    1 { condition 
+    1 { #condition 
     
 
 Import-Csv -Path $CustomerData | ForEach-Object {
@@ -87,7 +87,7 @@ $caml=@"
                 Write-Host "this item exists:" $_.Tracer "  " $X
                 Set-PnPListItem -List $listName -identity $checkitem -Values @{
                     "Tracer"= $_.Tracer;
-                    "JobNumber"= $_.Jobnumber;
+                    "Jobnumber"= $_.Jobnumber;
                     "TracerName"= $_.TracerName;
                     "FileImportDateStamp" = "Update rec" + $DateStamp
                     }
@@ -98,7 +98,7 @@ $caml=@"
                 #//add item
                 Add-PnPListItem -List $listName -Values @{
                     "Tracer"= $_.Tracer;
-                    "JobNumber"= $_.Jobnumber;
+                    "Jobnumber"= $_.Jobnumber;
                     "TracerName"= $_.TracerName;
                     "FileImportDateStamp" ="Insert rec" + $DateStamp
                     }
@@ -199,4 +199,4 @@ $caml=@"
 
 }#End of Function
 Clear-Host
-#GetImportCSVdatasource -CSVFileDir "Z:\JobSystem\PowerApp Data\StaffFile.csv" -SPOListName "StaffFile" -Option 4
+#GetImportCSVdatasource -CSVFileDir "C:\AzureDevOps\PowerShell\tie\data\TracerFile1.csv" -SPOListName "TracerData" -Option 2
