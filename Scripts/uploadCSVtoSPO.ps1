@@ -1,11 +1,11 @@
 ﻿#Load SharePoint CSOM Assemblies
-Add-Type -Path "C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.Client.dll"
-Add-Type -Path "C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.Client.Runtime.dll"
+Add-Type -Path "C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\16\ISAPI\Microsoft.SharePoint.Client.dll"
+Add-Type -Path "C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\16\ISAPI\Microsoft.SharePoint.Client.Runtime.dll"
 [Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'  
 ### Variables for Processing
 $WebUrl = "https://tiesurgical.sharepoint.com/sites/QA/"
 $LibraryName ="Documents"
-$SourceFolder="Z:\JobSystem\Jobfiles\"
+$SourceFolder="Z:\JobSystem\PowerApp Data\"
 $UserName ="spdev@tiesurgical.com.au"
 $Password ="ToolInst2017"
   
